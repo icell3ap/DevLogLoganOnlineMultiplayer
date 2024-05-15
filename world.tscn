@@ -1,0 +1,156 @@
+[gd_scene load_steps=9 format=3 uid="uid://dv0djlk8cymle"]
+
+[ext_resource type="PackedScene" uid="uid://yhww7prpe0cj" path="res://ground.tscn" id="1_imi2v"]
+[ext_resource type="Script" path="res://world.gd" id="1_mv7ms"]
+[ext_resource type="PackedScene" uid="uid://c7snmiqmk4nma" path="res://obstacle.tscn" id="2_mnmxq"]
+[ext_resource type="Texture2D" uid="uid://crp00vrcf23ko" path="res://addons/kenney_particle_pack/circle_05.png" id="3_p3cjy"]
+[ext_resource type="PackedScene" uid="uid://bqmh87to086d1" path="res://ball.tscn" id="5_n8m8a"]
+
+[sub_resource type="Environment" id="Environment_v1o6e"]
+background_energy_multiplier = 2.27
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfaka"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3hm2"]
+bg_color = Color(0.827451, 0.2, 0, 1)
+
+[node name="World" type="Node"]
+script = ExtResource("1_mv7ms")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v1o6e")
+
+[node name="Obstacle" parent="." instance=ExtResource("2_mnmxq")]
+transform = Transform3D(2.82843, 0, -2.82843, 0, 4, 0, 2.82843, 0, 2.82843, 12, -0.183136, 12)
+
+[node name="Obstacle2" parent="." instance=ExtResource("2_mnmxq")]
+transform = Transform3D(2.82842, 0, -2.82842, 0, 4, 0, 2.82842, 0, 2.82842, -12, -0.18313, -12)
+
+[node name="Obstacle3" parent="." instance=ExtResource("2_mnmxq")]
+transform = Transform3D(4.57724, 0, 0, 0, 3.95461, 0.0964673, 0, -0.0115265, 33.0967, -29.782, -2.80365, -7.8839)
+
+[node name="Obstacle4" parent="." instance=ExtResource("2_mnmxq")]
+transform = Transform3D(4.6999, 1.38357, -20.0904, 0.192902, 3.68243, 8.22595, 16.3824, -0.440288, 5.6668, -29.386, -2.84834, -35.3868)
+
+[node name="Obstacle6" parent="." instance=ExtResource("2_mnmxq")]
+transform = Transform3D(-15.9564, -0.556259, 10.6412, -0.0646656, 3.6441, 12.8937, -5.99164, 1.44205, -28.478, 14.5082, 0.0508971, -29.0633)
+
+[node name="Obstacle5" parent="." instance=ExtResource("2_mnmxq")]
+transform = Transform3D(12.1792, 0, 15.6961, 0, 3.95834, 0, -11.9238, 0, 16.0323, -7.39327, -4.76065, -40.3808)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.806898, 0, 0.59069, -0.126107, 0.976945, 0.172265, -0.577072, -0.213491, 0.788295, 0, 0, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, -2.38419e-07, 17.8914, -2.38419e-07)
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, -2.38419e-07, 17.8914, -2.38419e-07)
+visible = false
+
+[node name="ground" parent="." instance=ExtResource("1_imi2v")]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, -2.61889, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 399.0
+offset_top = 213.0
+offset_right = -399.0
+offset_bottom = -213.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HostButton" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Host"
+
+[node name="JoinButton" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Join"
+
+[node name="AddressEntry" type="LineEdit" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "enter IP address"
+alignment = 1
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.03, 0.03)
+pivot_offset = Vector2(576, 324)
+texture = ExtResource("3_p3cjy")
+stretch_mode = 5
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 479.0
+offset_top = 600.0
+offset_right = -479.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_qfaka")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m3hm2")
+max_value = 3.0
+value = 3.0
+show_percentage = false
+
+[node name="FPSCounter" type="Label" parent="CanvasLayer/HUD"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://player.tscn")
+spawn_path = NodePath("..")
+
+[node name="Ball" parent="." instance=ExtResource("5_n8m8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.704, 7.67475, 9.53487)
+
+[node name="Ball2" parent="." instance=ExtResource("5_n8m8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2509, 58.6372, 0)
+
+[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
